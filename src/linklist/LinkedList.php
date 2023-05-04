@@ -75,6 +75,29 @@ class LinkedList
     }
 
     /**
+     * @Description 循环链表
+     *
+     * @param string|NULL $data
+     * @return bool
+     */
+    public function insertAtEnd(string $data = NULL) : bool
+    {
+        $newNode = new ListNode($data);
+        if ($this->_firstNode === NULL) {
+            $this->_firstNode = &$newNode;
+        } else {
+            $currentNode = $this->_firstNode;
+            while ($currentNode->next !== $this->_firstNode) {
+                $currentNode = $currentNode->next;
+            }
+            $currentNode->next = $newNode;
+        }
+        $newNode->next = $this->_firstNode;
+        $this->_totalNodes++;
+        return true;
+    }
+
+    /**
      * @Description 双指针逻辑，快慢指针
      *
      * @param string|NULL $data
@@ -175,6 +198,81 @@ class LinkedList
         return false;
     }
 
+    /**
+     * @Description 删除其中一个元素
+     *
+     * @param string|NULL $query
+     * @return void
+     */
+    public function delete(string $query = NULL)
+    {
+        if ($this->_firstNode) {
+            $previous = NULL;
+            $currenNode = $this->_firstNode;
+            while ($currenNode !== NULL) {
+                if ($currenNode->data == $query) {
+                    if ($currenNode->next == NULL) {
+                        $previous->next = NULL;
+                    } else {
+                        $previous->next = $currenNode->next;
+                    }
+                    $this->_totalNodes--;
+                    break;
+                } else {
+                    $previous = $currenNode;
+                    $currenNode = $currenNode->next;
+                }
+            }
+        }
+    }
+
+    /**
+     * @Description 链表反转
+     * @return void
+     */
+    public function reverse()
+    {
+        if ($this->_firstNode !== NULL) {
+            if ($this->_firstNode->next !== NULL) {
+                $reversedList = NULL;
+                $currentNode = $this->_firstNode;
+                while ($currentNode !== NULL) {
+                    $next = $currentNode->next;
+                    $currentNode->next = $reversedList;
+                    $reversedList = $currentNode;
+                    $currentNode = $next;
+                }
+                $this->_firstNode = $reversedList;
+            }
+        }
+    }
+
+    /**
+     * @Description 寻找指定位置
+     *
+     * @param int $n
+     * @return void
+     */
+    public function getNthNode(int $n = 0)
+    {
+        $count = 1;
+        if ($this->_firstNode !== NULL) {
+            $currentNode = $this->_firstNode;
+            while ($currentNode !== NULL) {
+                if ($count === $n) {
+                    return $currentNode;
+                }
+                $count++;
+                $currentNode = $currentNode->next;
+            }
+        }
+    }
+
+    /**
+     * @Description 链表展示
+     *
+     * @return void
+     */
     public function display()
     {
         echo "Total book titles:".$this->_totalNodes."\n";
