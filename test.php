@@ -3,6 +3,7 @@
 require_once "./src/linklist/LinkedList.php";
 require_once "./src/tree/Tree.php";
 require_once "./src/binarytree/BinaryTree.php";
+require_once "./src/bst/Bst.php";
 
 //myself linklist
 //$link = new \app\src\linklist\LinkedList();
@@ -77,21 +78,44 @@ require_once "./src/binarytree/BinaryTree.php";
 //$tree->traverse($tree->root);
 
 
-$final = new \app\src\binarytree\BinaryNode("Final");
+//$final = new \app\src\binarytree\BinaryNode("Final");
+//
+//$tree = new \app\src\binarytree\BinaryTree($final);
+//
+//$semiFinal1 = new \app\src\binarytree\BinaryNode("Semi Final 1");
+//$semiFinal2 = new \app\src\binarytree\BinaryNode("Semi Final 2");
+//$quarterFinal1 = new \app\src\binarytree\BinaryNode("Quarter Final 1");
+//$quarterFinal2 = new \app\src\binarytree\BinaryNode("Quarter Final 2");
+//$quarterFinal3 = new \app\src\binarytree\BinaryNode("Quarter Final 3");
+//$quarterFinal4 = new \app\src\binarytree\BinaryNode("Quarter Final 4");
+//
+//$semiFinal1->addChildren($quarterFinal1, $quarterFinal2);
+//$semiFinal2->addChildren($quarterFinal3, $quarterFinal4);
+//
+//$final->addChildren($semiFinal1, $semiFinal2);
+//
+//$tree->traverse($tree->root);
 
-$tree = new \app\src\binarytree\BinaryTree($final);
+//BST
+$tree = new \app\src\bst\Bst(10);
 
-$semiFinal1 = new \app\src\binarytree\BinaryNode("Semi Final 1");
-$semiFinal2 = new \app\src\binarytree\BinaryNode("Semi Final 2");
-$quarterFinal1 = new \app\src\binarytree\BinaryNode("Quarter Final 1");
-$quarterFinal2 = new \app\src\binarytree\BinaryNode("Quarter Final 2");
-$quarterFinal3 = new \app\src\binarytree\BinaryNode("Quarter Final 3");
-$quarterFinal4 = new \app\src\binarytree\BinaryNode("Quarter Final 4");
+$tree->insert(12);
+$tree->insert(6);
+$tree->insert(3);
+$tree->insert(8);
+$tree->insert(15);
+$tree->insert(13);
+$tree->insert(36);
 
-$semiFinal1->addChildren($quarterFinal1, $quarterFinal2);
-$semiFinal2->addChildren($quarterFinal3, $quarterFinal4);
+//$tree->traverse($tree->root);
+//
+//$tree->remove(15);
+//
+//echo "------\n";
 
-$final->addChildren($semiFinal1, $semiFinal2);
-
-$tree->traverse($tree->root);
+$tree->traverse($tree->root, "pre-order");
+echo "\n";
+$tree->traverse($tree->root, 'in-order');
+echo "\n";
+$tree->traverse($tree->root, 'post-order');
 

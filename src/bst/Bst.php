@@ -101,4 +101,108 @@ class Bst
             $node->delete();
         }
     }
+
+    /**
+     * @Description 基础遍历
+     *
+     * @param Node $node
+     * @return void
+     */
+//    public function traverse(Node $node)
+//    {
+//        if ($node) {
+//            if ($node->left) {
+//                $this->traverse($node->left);
+//            }
+//            echo $node->data . "\n";
+//            if ($node->right) {
+//                $this->traverse($node->right);
+//            }
+//        }
+//    }
+
+    /**
+     * @Description 中序遍历：左 ， 根， 右
+     *
+     * @param Node $node
+     * @return void
+     */
+    public function inOrder(Node $node)
+    {
+        if ($node) {
+            if ($node->left) {
+                $this->traverse($node->left);
+            }
+            echo $node->data . " ";
+            if ($node->right) {
+                $this->traverse($node->right);
+            }
+        }
+    }
+
+    /**
+     * @Description 前序遍历 ：根， 左， 右
+     *
+     * @param Node $node
+     * @return void
+     */
+    public function preOrder(Node $node)
+    {
+        if ($node) {
+            echo $node->data . " ";
+            if ($node->left) {
+                $this->traverse($node->left);
+            }
+            if ($node->right) {
+                $this->traverse($node->right);
+            }
+        }
+    }
+
+    /**
+     * @Description 后续遍历：左， 右， 根
+     *
+     * @param Node $node
+     * @return void
+     */
+    public function postOrder(Node $node)
+    {
+        if ($node) {
+            if ($node->left) {
+                $this->traverse($node->left);
+            }
+            if ($node->right) {
+                $this->traverse($node->right);
+            }
+            echo $node->data . " ";
+        }
+    }
+
+
+    /**
+     * @Description 遍历的时候利用画图的方式学习
+     *
+     * Pre  前序 遍历， 往 node 左边画 点 * 然后连起来
+     * In   中序 遍历， 往 node 下边画 点 * 然后连起来
+     * post 后序 遍历， 往 node 右边画 点 * 然后连起来
+     *
+     * @param Node $node
+     * @param string $type
+     * @return void
+     */
+
+    public function traverse(Node $node, string $type = "in-order")
+    {
+        switch ($type) {
+            case "in-order":
+                $this->inOrder($node);
+                break;
+            case "pre-order":
+                $this->preOrder($node);
+                break;
+            case "post-order":
+                $this->postOrder($node);
+                break;
+        }
+    }
 }
