@@ -39,7 +39,7 @@ class Bst
                     if ($node->right) {
                         $node = $node->right;
                     } else {
-                        $node->right = new Node($data);
+                        $node->right = new Node($data, $node);
                         $node = $node->right;
                         break;
                     }
@@ -47,7 +47,7 @@ class Bst
                     if ($node->left) {
                         $node = $node->left;
                     } else {
-                        $node->left = new Node($data);
+                        $node->left = new Node($data, $node);
                         $node = $node->left;
                         break;
                     }
@@ -88,24 +88,17 @@ class Bst
         return $node;
     }
 
-    public function delete()
+    /**
+     * @Description 删除节点
+     *
+     * @param int $data
+     * @return void
+     */
+    public function remove(int $data)
     {
-        $node = $this;
-        if ($node->left && !$node->right) {
-            if ($node->parent->left === $node) {
-                $node->parent->left = NULL;
-            } else {
-                $node->parent->right = NULL;
-            }
-        } elseif ($node->left && $node->right) {
-            $successor = $node->successor();
-            $node->data = $successor->data;
-            $successor->delete();
-        } elseif ($node->left) {
-            if ($node->parent->left === $node) {
-                $node->parent->left == $node->left;
-                $node->left->parent = 
-            }
+        $node = $this->search($data);
+        if ($node) {
+            $node->delete();
         }
     }
 }
