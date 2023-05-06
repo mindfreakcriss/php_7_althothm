@@ -4,6 +4,7 @@ require_once "./src/linklist/LinkedList.php";
 require_once "./src/tree/Tree.php";
 require_once "./src/binarytree/BinaryTree.php";
 require_once "./src/bst/Bst.php";
+require_once "./src/sort/Sort.php";
 
 //myself linklist
 //$link = new \app\src\linklist\LinkedList();
@@ -97,25 +98,35 @@ require_once "./src/bst/Bst.php";
 //$tree->traverse($tree->root);
 
 //BST
-$tree = new \app\src\bst\Bst(10);
-
-$tree->insert(12);
-$tree->insert(6);
-$tree->insert(3);
-$tree->insert(8);
-$tree->insert(15);
-$tree->insert(13);
-$tree->insert(36);
-
-//$tree->traverse($tree->root);
+//$tree = new \app\src\bst\Bst(10);
 //
-//$tree->remove(15);
+//$tree->insert(12);
+//$tree->insert(6);
+//$tree->insert(3);
+//$tree->insert(8);
+//$tree->insert(15);
+//$tree->insert(13);
+//$tree->insert(36);
 //
-//echo "------\n";
+////$tree->traverse($tree->root);
+////
+////$tree->remove(15);
+////
+////echo "------\n";
+//
+//$tree->traverse($tree->root, "pre-order");
+//echo "\n";
+//$tree->traverse($tree->root, 'in-order');
+//echo "\n";
+//$tree->traverse($tree->root, 'post-order');
 
-$tree->traverse($tree->root, "pre-order");
-echo "\n";
-$tree->traverse($tree->root, 'in-order');
-echo "\n";
-$tree->traverse($tree->root, 'post-order');
+//sort
+$array = [20,45,93,67,10,97,52,88,33,92];
+$sort = new \app\src\sort\Sort();
+//$array = $sort->bubbleSort($array);
+//$array = $sort->selectionSort($array);
+//$sort->insertionSort($array);
+$array = $sort->mergeSort($array);
+echo implode(",",$array);
+
 
