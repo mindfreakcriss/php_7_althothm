@@ -5,6 +5,7 @@ require_once "./src/tree/Tree.php";
 require_once "./src/binarytree/BinaryTree.php";
 require_once "./src/bst/Bst.php";
 require_once "./src/sort/Sort.php";
+require_once "./src/recursion/Recursion.php";
 
 //myself linklist
 //$link = new \app\src\linklist\LinkedList();
@@ -121,12 +122,50 @@ require_once "./src/sort/Sort.php";
 //$tree->traverse($tree->root, 'post-order');
 
 //sort
-$array = [20,45,93,67,10,97,52,88,33,92];
-$sort = new \app\src\sort\Sort();
-//$array = $sort->bubbleSort($array);
-//$array = $sort->selectionSort($array);
-//$sort->insertionSort($array);
-$array = $sort->mergeSort($array);
-echo implode(",",$array);
+//$array = [20,45,93,67,10,97,52,88,33,92];
+//$sort = new \app\src\sort\Sort();
+////$array = $sort->bubbleSort($array);
+////$array = $sort->selectionSort($array);
+////$sort->insertionSort($array);
+//$array = $sort->mergeSort($array);
+//echo implode(",",$array);
+
+
+//BFS
+//$root = new \app\src\tree\TreeNode("8");
+//
+//$tree = new \app\src\tree\Tree($root);
+//
+//$node1 = new \app\src\tree\TreeNode("3");
+//$node2 = new \app\src\tree\TreeNode("10");
+//$root->addChildren($node1);
+//$root->addChildren($node2);
+//
+//$node3 = new \app\src\tree\TreeNode("1");
+//$node4 = new \app\src\tree\TreeNode("6");
+//$node5 = new \app\src\tree\TreeNode("14");
+//$node1->addChildren($node3);
+//$node1->addChildren($node4);
+//$node2->addChildren($node5);
+//
+//$node6 = new \app\src\tree\TreeNode("4");
+//$node7 = new \app\src\tree\TreeNode("7");
+//$node8 = new \app\src\tree\TreeNode("13");
+//
+//$node4->addChildren($node6);
+//$node4->addChildren($node7);
+//$node5->addChildren($node8);
+//
+////$visited = $tree->bfs($tree->root);
+//
+//$visited = $tree->dfs($tree->root);
+//
+//while (!$visited->isEmpty()) {
+//    echo $visited->dequeue()->data. "\n";
+//}
+
+//Recursion
+$recursion = new \app\recursion\Recursion();
+$recursion->hanoi(3,"A","B","C");
 
 

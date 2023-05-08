@@ -23,4 +23,52 @@ class Tree
             }
         }
     }
+
+    /**
+     * @Description 广度优先搜索
+     *
+     * @param TreeNode $node
+     * @return \SplQueue
+     */
+    public function bfs(TreeNode $node) : \SplQueue {
+        $queue = new \SplQueue();
+        $visited = new \SplQueue();
+
+        $queue->enqueue($node);
+
+        while (!$queue->isEmpty()) {
+            $current = $queue->dequeue();
+            $visited->enqueue($current);
+
+            foreach ($current->children as $child) {
+                $queue->enqueue($child);
+            }
+        }
+        return $visited;
+    }
+
+    /**
+     * @Description 深度优先
+     *
+     * @param TreeNode $node
+     * @return \SplQueue
+     */
+    public function dfs(TreeNode $node)
+    {
+        $stack = new \SplStack();
+        $visited = new \SplQueue();
+
+        $stack->push($node);
+
+        while (!$stack->isEmpty()) {
+
+            $current = $stack->pop();
+            $visited->enqueue($current);
+
+            foreach ($current->children as $child) {
+                $stack->push($child);
+            }
+        }
+        return $visited;
+    }
 }
