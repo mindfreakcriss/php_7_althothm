@@ -39,13 +39,14 @@ class MinHeap
     }
 
     /**
-     * @Description 插入
+     * @Description 插入,先往最后一个位置插入元素，然后根据堆的性质 ，siftUp 操作
      *
      * @param int $i
      * @return void
      */
     public function insert(int $i)
     {
+        // 第一个元素不需要
         if ($this->count == 0) {
             $this->heap[1] = $i;
             $this->count = 2;
@@ -63,9 +64,9 @@ class MinHeap
     public function siftUp()
     {
         $tmpPos = $this->count - 1;
-        $tmp = intval($tmpPos / 2);
+        $tmp = intval($tmpPos / 2); //父节点
 
-        while ($tmpPos > 0 && $this->heap[$tmpPos]) {
+        while ($tmpPos > 0 && $this->heap[$tmp] > $this->heap[$tmpPos] ) {
             $this->swap($tmpPos, $tmp);
             $tmpPos = intval($tmpPos / 2);
             $tmp = intval($tmpPos / 2);
@@ -113,7 +114,7 @@ class MinHeap
     }
 
     /**
-     * @Description 去除根节点并恢复堆的性质
+     * @Description 去除根节点并恢复堆的性质，删除顶部元素，最后一个元素致0 ，替换顶部元素，然后siftDown 去维护堆的平衡
      *
      * @return mixed
      */

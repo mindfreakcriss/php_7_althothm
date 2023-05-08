@@ -6,6 +6,8 @@ require_once "./src/binarytree/BinaryTree.php";
 require_once "./src/bst/Bst.php";
 require_once "./src/sort/Sort.php";
 require_once "./src/recursion/Recursion.php";
+require_once "./src/heap/MinHeap.php";
+require_once "./src/heap/Heap.php";
 
 //myself linklist
 //$link = new \app\src\linklist\LinkedList();
@@ -165,7 +167,24 @@ require_once "./src/recursion/Recursion.php";
 //}
 
 //Recursion
-$recursion = new \app\recursion\Recursion();
-$recursion->hanoi(3,"A","B","C");
+//$recursion = new \app\recursion\Recursion();
+//$recursion->hanoi(3,"A","B","C");
 
+
+//heap
+//$array = [37,44,34,65,26,86,129,83,9];
+//echo "Initial array \n". implode("\t", $array) . "\n";
+//$minHeap = new \app\src\heap\MinHeap(count($array));
+//$minHeap->create($array);
+//echo "Construct Heap\n";
+//$minHeap->display();
+//echo "Min Extract" . $minHeap->extractMin() . "\n";
+//$minHeap->display();
+
+
+//SPLHeap
+$array = [37,44,34,65,26,86,143,129,9];
+$heap = new \app\src\heap\Heap();
+$heap->create($array);
+$heap->display();
 
